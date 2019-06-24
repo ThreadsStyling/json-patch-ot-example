@@ -1,0 +1,306 @@
+[
+  {
+    "op": "add",
+    "path": "",
+    "value": {
+      "title": "Book catalogue",
+      "books": [
+        {
+          "title": "Great Expectations",
+          "author": "Charles Dickens",
+          "inStock": true
+        },
+        {
+          "title": "David Copperfield",
+          "author": "Charles Dickens",
+          "inStock": false
+        }
+      ]
+    }
+  },
+  {
+    "op": "move",
+    "path": "/books/0",
+    "from": "/books/1"
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/0"
+  },
+  {
+    "op": "move",
+    "path": "/books/0",
+    "from": "/books/1"
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/inStock",
+    "value": false
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/inStock",
+    "value": true
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/0"
+  },
+  {
+    "op": "add",
+    "path": "/books/1",
+    "value": {
+      "title": "Enter title",
+      "author": "Enter authro",
+      "inStock": false
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/title",
+    "value": "Enter title 11111"
+  },
+  {
+    "op": "add",
+    "path": "/books/2",
+    "value": {
+      "title": "Enter title",
+      "author": "Enter authro",
+      "inStock": false
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/books/2/title",
+    "value": "Enter title222222"
+  },
+  {
+    "op": "add",
+    "path": "/books/3",
+    "value": {
+      "title": "Enter title",
+      "author": "Enter authro",
+      "inStock": false
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/books/3/title",
+    "value": "Enter title3333"
+  },
+  {
+    "op": "move",
+    "path": "/books/0",
+    "from": "/books/1"
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/2"
+  },
+  {
+    "op": "move",
+    "path": "/books/2",
+    "from": "/books/3"
+  },
+  {
+    "op": "move",
+    "path": "/books/4",
+    "from": "/books/3"
+  },
+  {
+    "op": "move",
+    "path": "/books/3",
+    "from": "/books/2"
+  },
+  {
+    "op": "move",
+    "path": "/books/2",
+    "from": "/books/1"
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/title",
+    "value": "David Copperfield1"
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/author",
+    "value": "Charles Dickens111"
+  },
+  {
+    "op": "replace",
+    "path": "/books/2/title",
+    "value": "Enter title11111"
+  },
+  {
+    "op": "remove",
+    "path": "/books/1"
+  },
+  {
+    "op": "replace",
+    "path": "/books/2/title",
+    "value": "Enter title999990"
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/title",
+    "value": "Enter title22222"
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/0"
+  },
+  {
+    "op": "replace",
+    "path": "/books/2/title",
+    "value": "Enter title88888"
+  },
+  {
+    "op": "move",
+    "path": "/books/0",
+    "from": "/books/1"
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/2"
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/title",
+    "value": "Enter titleblah"
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/inStock",
+    "value": true
+  },
+  {
+    "op": "move",
+    "path": "/books/3",
+    "from": "/books/2"
+  },
+  {
+    "op": "remove",
+    "path": "/books/2"
+  },
+  {
+    "op": "replace",
+    "path": "/books/2/inStock",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/books/2",
+    "value": {
+      "title": "Enter title",
+      "author": "Enter authro",
+      "inStock": false
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/books/2/title",
+    "value": "Enter titlessss"
+  },
+  {
+    "op": "replace",
+    "path": "/books/0/inStock",
+    "value": true
+  },
+  {
+    "op": "add",
+    "path": "/books/4",
+    "value": {
+      "title": "Enter title",
+      "author": "Enter authro",
+      "inStock": false
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/books/4/title",
+    "value": "Enter title123"
+  },
+  {
+    "op": "replace",
+    "path": "/books/0/inStock",
+    "value": false
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/0"
+  },
+  {
+    "op": "move",
+    "path": "/books/0",
+    "from": "/books/1"
+  },
+  {
+    "op": "move",
+    "path": "/books/0",
+    "from": "/books/1"
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/2"
+  },
+  {
+    "op": "replace",
+    "path": "/books/3/title",
+    "value": "Enter title44444"
+  },
+  {
+    "op": "move",
+    "path": "/books/2",
+    "from": "/books/1"
+  },
+  {
+    "op": "remove",
+    "path": "/books/1"
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/2"
+  },
+  {
+    "op": "move",
+    "path": "/books/2",
+    "from": "/books/3"
+  },
+  {
+    "op": "move",
+    "path": "/books/3",
+    "from": "/books/2"
+  },
+  {
+    "op": "move",
+    "path": "/books/2",
+    "from": "/books/1"
+  },
+  {
+    "op": "remove",
+    "path": "/books/1"
+  },
+  {
+    "op": "replace",
+    "path": "/books/1/title",
+    "value": "Enter title55555"
+  },
+  {
+    "op": "move",
+    "path": "/books/1",
+    "from": "/books/0"
+  },
+  {
+    "op": "remove",
+    "path": "/books/1"
+  }
+]
