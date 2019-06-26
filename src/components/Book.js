@@ -2,6 +2,7 @@ import React from "react";
 import EditableText from "./EditableText";
 import Checkbox from "./Checkbox";
 import styles from "./Book.module.css";
+import Color from "./Color";
 
 const Book = ({
   onMoveUp,
@@ -9,17 +10,20 @@ const Book = ({
   onDelete,
   onAddAfter,
   title,
+  color,
   inStock,
   author,
   disableUp,
   disableDown,
   onTitleChange,
   onInStockChange,
+  onColorChange,
   onAuthorChange
 }) => {
   return (
-    <div className={styles.Book}>
+    <div className={styles.Book} style={{borderColor: color}}>
       <span className={styles.Toolbar}>
+        <Color color={color} onChange={onColorChange} />
         {!disableUp && <button onClick={onMoveUp}><span role="img" aria-label="Move up">⬆</span></button>}
         {!disableDown && <button onClick={onMoveDown}><span role="img" aria-label="Move up">⬇</span></button>}
         <button onClick={onDelete}><span role="img" aria-label="Delete">✖️</span></button>

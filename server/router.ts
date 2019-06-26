@@ -22,7 +22,7 @@ router.post("/", async ctx => {
   console.log('patch', patch);
 
   const transformedPatch = jsonPatchOT(unknownChanges, patch, {
-    acceptedWinsOnEqualPath: true
+    acceptedWinsOnEqualPath: false
   });
 
   console.log('transformedPatch', transformedPatch);

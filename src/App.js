@@ -7,7 +7,8 @@ import { sendChanges, clone } from "./utils";
 
 const EMPTY_ENTRY = {
   title: "Enter title",
-  author: "Enter authro",
+  author: "Enter author",
+  color: "#cccccc",
   inStock: false
 };
 
@@ -63,27 +64,29 @@ const App = () => {
           />
         </h1>
       </header>
-      {state.books.map(({ title, author, inStock }, i) => (
+      {state.books.map(({ title, author, inStock, color }, i) => (
         <Book
           key={i}
           title={title}
           author={author}
           inStock={inStock}
+          color={color}
           disableUp={i === 0}
           disableDown={i === state.books.length - 1}
           onMoveUp={createChangeHandler(
             "move",
-            `/books/${i}`,
-            `/books/${i - 1}`
+            `/books/${i - 1}`,
+            `/books/${i}`
           )}
           onMoveDown={createChangeHandler(
             "move",
-            `/books/${i}`,
-            `/books/${i + 1}`
+            `/books/${i + 1}`,
+            `/books/${i}`
           )}
           onDelete={createChangeHandler("remove", `/books/${i}`)}
           onTitleChange={createChangeHandler("replace", `/books/${i}/title`)}
           onAuthorChange={createChangeHandler("replace", `/books/${i}/author`)}
+          onColorChange={createChangeHandler("replace", `/books/${i}/color`)}
           onInStockChange={createChangeHandler(
             "replace",
             `/books/${i}/inStock`

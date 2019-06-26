@@ -1,7 +1,9 @@
 .Book {
   padding: 10px;
   border: 1px solid #ccc;
+  border-left-width: 30px;
   margin: 10px;
+  box-sizing: border-box;
 }
 
 .Toolbar {
