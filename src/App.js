@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Book from "./components/Book";
 import EditableText from "./components/EditableText";
-// import Checkbox from "./components/Checkbox";
-import jsonPatch from "fast-json-patch";
-import { sendChanges, clone } from "./utils";
+import { createChangeHandler, fetchInitialData } from "./utils";
 
 const EMPTY_ENTRY = {
   title: "Enter title",
@@ -15,44 +13,9 @@ const EMPTY_ENTRY = {
 const App = () => {
   const [state, setState] = useState({ title: "Loading...", books: [] });
   const lastKnownOperationId = useRef(0);
+  const changeHandler = createChangeHandler(lastKnownOperationId, state, setState);
 
-  const createChangeHandler = (type, path, from) => {
-    return async value => {
-      if (value.target) value = undefined;
-
-      const result = await sendChanges(
-        [
-          {
-            op: type,
-            path,
-            from,
-            value
-          }
-        ],
-        lastKnownOperationId.current
-      );
-
-      const newState = jsonPatch.applyPatch(clone(state), result.changesToApply)
-        .newDocument;
-
-      lastKnownOperationId.current = result.lastKnownOperationId;
-      setState(newState);
-    };
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch("http://localhost:3001/");
-      const {
-        state: newState,
-        lastKnownOperationId: newId
-      } = await result.json();
-
-      lastKnownOperationId.current = newId;
-      setState({ ...newState });
-    };
-    fetchData();
-  }, []);
+  useEffect(() => fetchInitialData(lastKnownOperationId, setState), []);
 
   return (
     <div>
@@ -60,7 +23,7 @@ const App = () => {
         <h1>
           <EditableText
             text={state.title}
-            onChange={createChangeHandler("replace", "/title")}
+            onChange={changeHandler("replace", "/title")}
           />
         </h1>
       </header>
@@ -73,26 +36,26 @@ const App = () => {
           color={color}
           disableUp={i === 0}
           disableDown={i === state.books.length - 1}
-          onMoveUp={createChangeHandler(
+          onMoveUp={changeHandler(
             "move",
             `/books/${i - 1}`,
             `/books/${i}`
           )}
-          onMoveDown={createChangeHandler(
+          onMoveDown={changeHandler(
             "move",
             `/books/${i + 1}`,
             `/books/${i}`
           )}
-          onDelete={createChangeHandler("remove", `/books/${i}`)}
-          onTitleChange={createChangeHandler("replace", `/books/${i}/title`)}
-          onAuthorChange={createChangeHandler("replace", `/books/${i}/author`)}
-          onColorChange={createChangeHandler("replace", `/books/${i}/color`)}
-          onInStockChange={createChangeHandler(
+          onDelete={changeHandler("remove", `/books/${i}`)}
+          onTitleChange={changeHandler("replace", `/books/${i}/title`)}
+          onAuthorChange={changeHandler("replace", `/books/${i}/author`)}
+          onColorChange={changeHandler("replace", `/books/${i}/color`)}
+          onInStockChange={changeHandler(
             "replace",
             `/books/${i}/inStock`
           )}
           onAddAfter={() =>
-            createChangeHandler("add", `/books/${i + 1}`)(EMPTY_ENTRY)
+            changeHandler("add", `/books/${i + 1}`)(EMPTY_ENTRY)
           }
         />
       ))}
